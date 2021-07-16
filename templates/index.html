@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col"> Name </th>
+                <th scope="col"> Symbol </th>
+                <th scope="col"> Quantity </th>
+                <th scope="col"> Current Price </th>
+                <th scope="col"> Total Value </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks: %}
+                <tr>
+                    <td scope="row">{{ stock['name'] }}</td>
+                    <td scope="row">{{ stock['symbol'] }}</td>
+                    <td scope="row">{{ stock['SUM(quantity)'] }}</td>
+                    <td scope="row">{{ stock['current_price'] }}</td>
+                    <td scope="row">{{ stock['total_value'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th scope="row"> Cash Balance </td>
+                <td scope="row">{{ cash }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th scope="row"> Grand Total </td>
+                <td scope="row">{{ grand_total  }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

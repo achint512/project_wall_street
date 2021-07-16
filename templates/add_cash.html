@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/add_cash" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="amount" placeholder="Amount" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Add Money!</button>
+    </form>
+
+    <br><br>
+
+    {% if success == False: %}
+        <div class="alert alert-danger" role="alert">
+            Please provide valid amount
+        </div>
+    {% elif success == True: %}
+        <div class="alert alert-success" role="alert">
+            "Succefully Added!"
+        </div>
+    {% endif %}
+{% endblock %}

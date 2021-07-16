@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Share Name (symbol)" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Find Price!</button>
+    </form>
+
+    <br><br>
+
+    {% if quotes == None: %}
+        <div class="alert alert-warning" role="alert">
+            Please try again with a valid share symbol
+        </div>
+    {% elif quotes != "" %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col"> Name </th>
+                    <th scope="col"> Price </th>
+                    <th scope="col"> Symbol </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">{{ quotes['name'] }}</td>
+                    <td>{{ quotes['price'] }}</td>
+                    <td>{{ quotes['symbol'] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

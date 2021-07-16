@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    {% if success == True %}
+    <form action="/sell" method="post">
+        <div class="form-group">
+            <select name="symbol">
+                {% for symbol in symbols: %}
+                    <option value="{{ symbol['symbol'] }}">{{ symbol['name'] + " (" + symbol['symbol'] + ")" }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Number of shares" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell shares!</button>
+    </form>
+    {% endif %}
+
+    <br><br>
+
+    {% if success == False: %}
+        <div class="alert alert-warning" role="alert">
+            {{ message }}
+        </div>
+    {% elif success == True and message != "": %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endif %}
+{% endblock %}
